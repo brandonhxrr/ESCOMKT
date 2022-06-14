@@ -1,0 +1,22 @@
+{% extends 'base/master.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+Iniciar sesión
+{% endblock %}
+
+{% block content %}
+<div style="width: 450px;  margin: 0 auto; padding: 10px;">
+  <h2>Iniciar sesión</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form|crispy}}
+    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+    <div class="text-center">
+      <p>¿Eres vendedor? <a href="/signup/">Regístrate</a></p>
+    </div>
+
+  </form>
+</div>
+{% endblock %}

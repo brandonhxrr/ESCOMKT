@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+  <title>
+    {% block title %}
+    {% endblock %}
+  </title>
+</head>
+
+<body>
+  <div id="contenedor">
+
+
+
+    {% if user.is_authenticated %}
+    <div class="containerNav">
+      <a class="navbar-brand" href="/home/">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/EscudoESCOM.png" width="30" height="30"
+            class="d-inline-block align-top" alt="">
+          ESCOMKT
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/profile/">Perfil</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/accounts/logout/"">Cerrar sesión</a>
+          </li>
+
+        </ul>
+      </div>
+      </nav>
+    </div>
+    {% else %}
+    <div class="containerNav">
+      <a class="navbar-brand" href="/home/">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/EscudoESCOM.png" width="30" height="30"
+            class="d-inline-block align-top" alt="">
+          ESCOMKT
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/accounts/login/">Iniciar sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+
+        </ul>
+      </div>
+      </nav>
+    </div>
+    {% endif %}
+
+    <div class="container">
+      <div class="auth-inner" style="margin: 5%">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+  </script>
+
+</body>
+
+</html>

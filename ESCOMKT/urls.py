@@ -19,6 +19,13 @@ from home import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.homeView, name='home'),
-    #path('', include('home.urls')),
+    path('home/', views.homeView.as_view(), name='home'),
+    path('detail/<int:pk>/', views.DetailProductView.as_view(), name='detail_product'),
+    path("accounts/", include("django.contrib.auth.urls")), 
+    path('', views.homeView.as_view(), name='start'),
+    path("signup/", views.SignUpView.as_view(), name="signup"),
+    path("profile/", views.profileView, name="profile"),
+    path('crear/', views.CreateProductView.as_view(), name='create_product'),
+    path('producto/<int:pk>/', views.EditProductView.as_view(), name='edit_product'),
+    path('producto/delete/<int:pk>/', views.DeleteProductView.as_view(), name='delete_product')
 ]
