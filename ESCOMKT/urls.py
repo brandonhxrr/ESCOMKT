@@ -16,11 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from home import views
+from . import settings
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls import handler404
+ 
+handler404 = views.error_404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.homeView.as_view(), name='home'),
-    path('detail/<int:pk>/', views.DetailProductView.as_view(), name='detail_product'),
+    path('detail/<int:pk>/', views.detailProductView, name='detail_product'),
     path("accounts/", include("django.contrib.auth.urls")), 
     path('', views.homeView.as_view(), name='start'),
     path("signup/", views.SignUpView.as_view(), name="signup"),
@@ -29,3 +35,6 @@ urlpatterns = [
     path('producto/<int:pk>/', views.EditProductView.as_view(), name='edit_product'),
     path('producto/delete/<int:pk>/', views.DeleteProductView.as_view(), name='delete_product')
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

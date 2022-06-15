@@ -1,0 +1,18 @@
+{% extends 'base/master.html' %}
+{% block title %}Borrar producto{% endblock %}
+
+{% block content %}
+    <div id="content-container" class="container p-none">
+        <div class="side-p">
+            <h3>¿Estás seguro?</h3>
+            <p>Estás a punto de eliminar un producto</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input class="btn btn-secondary" 
+                       type="button" value="Cancel" 
+                       onclick="window.history.go(-1);"/>
+                <input class="btn btn-danger" type="submit" value="Confirm"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

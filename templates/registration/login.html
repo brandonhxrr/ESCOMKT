@@ -12,7 +12,13 @@ Iniciar sesión
   <form method="post">
     {% csrf_token %}
     {{ form|crispy}}
-    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+    <br><br>
+    <div class="container bg-light">
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+      </div>
+    </div>
+    <br><br>
     <div class="text-center">
       <p>¿Eres vendedor? <a href="/signup/">Regístrate</a></p>
     </div>
